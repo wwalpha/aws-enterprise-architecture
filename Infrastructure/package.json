@@ -1,0 +1,10 @@
+{
+  "name": "infrastructure",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "plan": "terraform plan",
+    "start": "terraform apply -auto-approve"
+  }
+}
