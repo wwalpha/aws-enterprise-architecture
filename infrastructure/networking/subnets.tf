@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------------------------
 resource "aws_subnet" "public" {
   count             = length(local.availability_zones)
-  vpc_id            = aws_vpc.this.id
+  vpc_id            = aws_vpc.dmz.id
   cidr_block        = local.public_subnets_cidr_block[count.index]
   availability_zone = local.availability_zones[count.index]
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "public" {
 # ----------------------------------------------------------------------------------------------
 resource "aws_subnet" "network_fw" {
   count             = length(local.availability_zones)
-  vpc_id            = aws_vpc.this.id
+  vpc_id            = aws_vpc.dmz.id
   cidr_block        = local.network_fw_subnets_cidr_block[count.index]
   availability_zone = local.availability_zones[count.index]
 
@@ -37,7 +37,7 @@ resource "aws_subnet" "network_fw" {
 # ----------------------------------------------------------------------------------------------
 resource "aws_subnet" "transit_gw" {
   count             = length(local.availability_zones)
-  vpc_id            = aws_vpc.this.id
+  vpc_id            = aws_vpc.dmz.id
   cidr_block        = local.transit_gw_subnets_cidr_block[count.index]
   availability_zone = local.availability_zones[count.index]
 

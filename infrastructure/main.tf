@@ -65,3 +65,12 @@ module "networking" {
     aws = aws.Networking
   }
 }
+
+module "networking_test" {
+  source = "./networking-test"
+  providers = {
+    aws = aws.Networking
+  }
+
+  transit_gateway_id = module.networking.transit_gateway_id
+}
