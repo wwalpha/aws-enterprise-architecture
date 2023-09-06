@@ -3,9 +3,9 @@
 # ----------------------------------------------------------------------------------------------
 resource "aws_vpc_endpoint" "ssm" {
   vpc_id              = module.vpc.vpc_id
-  service_name        = "com.amazonaws.ap-northeast-1.ssm"
+  service_name        = "com.amazonaws.${local.region}.ssm"
   vpc_endpoint_type   = "Interface"
-  subnet_ids          = module.vpc.private_subnets[0].id
+  subnet_ids          = [module.vpc.private_subnets[0]]
   private_dns_enabled = true
   security_group_ids  = [module.endpoints_sg.security_group_id]
 
@@ -37,9 +37,9 @@ resource "aws_vpc_endpoint_policy" "ssm" {
 # ----------------------------------------------------------------------------------------------
 resource "aws_vpc_endpoint" "ec2messages" {
   vpc_id              = module.vpc.vpc_id
-  service_name        = "com.amazonaws.ap-northeast-1.ec2messages"
+  service_name        = "com.amazonaws.${local.region}.ec2messages"
   vpc_endpoint_type   = "Interface"
-  subnet_ids          = module.vpc.private_subnets[0].id
+  subnet_ids          = [module.vpc.private_subnets[0]]
   private_dns_enabled = true
   security_group_ids  = [module.endpoints_sg.security_group_id]
   tags = {
@@ -70,9 +70,9 @@ resource "aws_vpc_endpoint_policy" "ec2messages" {
 # ----------------------------------------------------------------------------------------------
 resource "aws_vpc_endpoint" "ssmmessages" {
   vpc_id              = module.vpc.vpc_id
-  service_name        = "com.amazonaws.ap-northeast-1.ssmmessages"
+  service_name        = "com.amazonaws.${local.region}.ssmmessages"
   vpc_endpoint_type   = "Interface"
-  subnet_ids          = module.vpc.private_subnets[0].id
+  subnet_ids          = [module.vpc.private_subnets[0]]
   private_dns_enabled = true
   security_group_ids  = [module.endpoints_sg.security_group_id]
   tags = {
