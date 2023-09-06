@@ -18,7 +18,7 @@ resource "aws_subnet" "public" {
 # ----------------------------------------------------------------------------------------------
 # AWS Subnet - Firewall
 # ----------------------------------------------------------------------------------------------
-resource "aws_subnet" "firewall" {
+resource "aws_subnet" "network_fw" {
   count             = length(local.availability_zones)
   vpc_id            = aws_vpc.this.id
   cidr_block        = local.network_fw_subnets_cidr_block[count.index]

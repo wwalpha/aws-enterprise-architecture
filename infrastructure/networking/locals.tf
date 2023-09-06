@@ -1,5 +1,5 @@
 locals {
-  firewall_endpoints = flatten(aws_networkfirewall_firewall.this.firewall_status[*].sync_states[*].*.attachment[*])[*].endpoint_id
+  nfw_endpoints = flatten(aws_networkfirewall_firewall.this.firewall_status[*].sync_states[*].*.attachment[*])[*].endpoint_id
   # firewall_subnet_ids = flatten(aws_networkfirewall_firewall.this.firewall_status[*].sync_states[*].*.attachment[*])[*].subnet_id
   # firewall_zones      = { for obj in flatten(aws_networkfirewall_firewall.this.firewall_status[*].sync_states[*].*) : obj.availability_zone => obj.attachment[0].endpoint_id }
 

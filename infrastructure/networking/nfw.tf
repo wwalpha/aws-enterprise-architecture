@@ -2,7 +2,7 @@
 # AWS Network Firewall
 # ----------------------------------------------------------------------------------------------
 resource "aws_networkfirewall_firewall" "this" {
-  name                              = "nfw"
+  name                              = "network-firewall"
   firewall_policy_arn               = aws_networkfirewall_firewall_policy.this.arn
   vpc_id                            = aws_vpc.this.id
   delete_protection                 = false
