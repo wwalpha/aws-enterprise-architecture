@@ -12,7 +12,12 @@ resource "aws_organizations_organization" "this" {
     "securityhub.amazonaws.com",
     "guardduty.amazonaws.com",
     "fms.amazonaws.com",
-    "reporting.trustedadvisor.amazonaws.com"
+    "reporting.trustedadvisor.amazonaws.com",
+    "access-analyzer.amazonaws.com",
+    "aws-artifact-account-sync.amazonaws.com",
+    "ds.amazonaws.com",
+    "networkmanager.amazonaws.com",
+    "ssm.amazonaws.com"
   ]
 
   enabled_policy_types = [
