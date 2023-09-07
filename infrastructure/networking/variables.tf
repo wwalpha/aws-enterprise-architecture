@@ -1,1 +1,1 @@
-
+variable "org_arn" {}

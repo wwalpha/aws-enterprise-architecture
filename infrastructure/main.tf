@@ -66,12 +66,14 @@ module "management" {
   }
 }
 
-module "networking" {
-  source = "./networking"
-  providers = {
-    aws = aws.Networking
-  }
-}
+# module "networking" {
+#   source = "./networking"
+#   providers = {
+#     aws = aws.Networking
+#   }
+
+#   org_arn = module.management.org_arn
+# }
 
 # module "networking_test" {
 #   source = "./networking-test"
