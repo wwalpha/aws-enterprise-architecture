@@ -62,7 +62,6 @@ resource "aws_route_table_association" "network_fw" {
   subnet_id      = aws_subnet.network_fw[count.index].id
 }
 
-
 # ----------------------------------------------------------------------------------------------
 # AWS Route Table - Transit Gateway Subnet
 # ----------------------------------------------------------------------------------------------

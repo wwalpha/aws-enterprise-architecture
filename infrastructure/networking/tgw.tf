@@ -7,6 +7,9 @@ resource "aws_ec2_transit_gateway" "this" {
   default_route_table_association = "disable"
   default_route_table_propagation = "disable"
   auto_accept_shared_attachments  = "disable"
+  tags = {
+    Name = "shared-tgw"
+  }
 }
 
 # ----------------------------------------------------------------------------------------------
@@ -14,6 +17,9 @@ resource "aws_ec2_transit_gateway" "this" {
 # ----------------------------------------------------------------------------------------------
 resource "aws_ec2_transit_gateway_route_table" "dmz" {
   transit_gateway_id = aws_ec2_transit_gateway.this.id
+  tags = {
+    Name = "dmz-vpc-rt"
+  }
 }
 
 # ----------------------------------------------------------------------------------------------
@@ -25,7 +31,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "dmz" {
   transit_gateway_default_route_table_propagation = false
   transit_gateway_id                              = aws_ec2_transit_gateway.this.id
   vpc_id                                          = aws_vpc.dmz.id
-  tags                                            = { Name = "dmz-vpc-attachment" }
+  tags = {
+    Name = "dmz-vpc-attachment"
+  }
 }
 
 # ----------------------------------------------------------------------------------------------

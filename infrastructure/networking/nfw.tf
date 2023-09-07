@@ -37,7 +37,6 @@ resource "aws_networkfirewall_firewall_policy" "this" {
     stateless_default_actions          = ["aws:forward_to_sfe"]
     stateless_fragment_default_actions = ["aws:forward_to_sfe"]
 
-
     stateful_rule_group_reference {
       resource_arn = aws_networkfirewall_rule_group.allow_domain.arn
     }

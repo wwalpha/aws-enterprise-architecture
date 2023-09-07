@@ -9,6 +9,13 @@ terraform {
 # ----------------------------------------------------------------------------------------------
 provider "aws" {
   region = "us-east-1"
+}
+
+# ----------------------------------------------------------------------------------------------
+# AWS Provider
+# ----------------------------------------------------------------------------------------------
+provider "aws" {
+  region = "us-east-1"
   alias  = "Management"
 
   assume_role {
@@ -66,11 +73,11 @@ module "networking" {
   }
 }
 
-module "networking_test" {
-  source = "./networking-test"
-  providers = {
-    aws = aws.Networking
-  }
+# module "networking_test" {
+#   source = "./networking-test"
+#   providers = {
+#     aws = aws.Networking
+#   }
 
-  transit_gateway_id = module.networking.transit_gateway_id
-}
+#   transit_gateway_id = module.networking.transit_gateway_id
+# }

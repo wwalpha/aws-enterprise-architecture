@@ -63,52 +63,9 @@ resource "aws_networkfirewall_rule_group" "stateless" {
   }
 }
 
-# resource "aws_networkfirewall_rule_group" "source_ip" {
-#   capacity = 100
-#   name     = "nfw-source-ip"
-#   type     = "STATEFUL"
-
-#   rule_group {
-#     stateful_rule_options {
-#       rule_order = "DEFAULT_ACTION_ORDER"
-#     }
-
-#     rules_source {
-#       stateful_rule {
-#         action = "PASS"
-#         header {
-#           destination      = "Any"
-#           destination_port = "443"
-#           direction        = "FORWARD"
-#           protocol         = "TCP"
-#           source_port      = "Any"
-#           source           = "10.10.2.0/24"
-#         }
-#         rule_option {
-#           keyword  = "sid"
-#           settings = ["1"]
-#         }
-#       }
-
-#       stateful_rule {
-#         action = "DROP"
-#         header {
-#           destination      = "Any"
-#           destination_port = "443"
-#           direction        = "ANY"
-#           protocol         = "TCP"
-#           source_port      = "Any"
-#           source           = "Any"
-#         }
-#         rule_option {
-#           keyword  = "sid"
-#           settings = ["2"]
-#         }
-#       }
-#     }
-#   }
-# }
-
+# ----------------------------------------------------------------------------------------------
+# AWS Network Firewall Rule Group - Domain Whitelist
+# ----------------------------------------------------------------------------------------------
 resource "aws_networkfirewall_rule_group" "allow_domain" {
   capacity = 100
   name     = "nfw-allow-domain"
